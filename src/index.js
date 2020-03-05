@@ -1,12 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import * as d3 from "d3";
+/*import BarChart2 from './BarChart2'
+import generateData from './data'*/
+const App = () => {
+    const url =
+      "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+   return d3
+      .json(url)
+      .then(res => {
+         console.log(res.data.map(x=>x[0]));
+      })
+      .catch(() => {
+         alert("Oh no, something horrible happened!");
+      });
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.querySelector("#container"));
+
+if (module.hot) {
+   module.hot.accept();
+}
+//https://wattenberger.com/blog/d3#grabbing-data
