@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import * as d3 from "d3";
+import GenerateData from './data'
 
-const BarChart2 = () => {
-  const dataset = [2, 4, 2, 6, 8];
+const BarChart2 = (props) => {
+  const dataset = props.data;
   const canvasHeight = 100;
   const canvasWidth = 200;
   const scale = 20;
